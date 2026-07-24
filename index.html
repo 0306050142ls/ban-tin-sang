@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bản tin AI &amp; Tự động hóa</title>
+<style>
+  :root{
+    --bg:#0b0e14; --bg2:#121722; --card:#161c28; --card2:#1c2431;
+    --line:#26303f; --text:#e6ebf2; --muted:#93a1b5; --dim:#6b7a90;
+    --accent:#6ea8fe; --accent2:#7ee0c0; --accent3:#c9a3ff; --warm:#ffb86b;
+    --shadow:0 8px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:radial-gradient(1200px 600px at 80% -10%,#1a2436 0,transparent 60%),var(--bg);
+    color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 20px 80px}
+  header{padding:44px 0 26px; border-bottom:1px solid var(--line); margin-bottom:8px}
+  .kicker{display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent2); font-weight:600}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+  h1{font-size:clamp(30px,5vw,46px); margin:14px 0 6px; letter-spacing:-.02em; font-weight:800}
+  .sub{color:var(--muted); font-size:16px; max-width:640px}
+  .meta{margin-top:18px; display:flex; flex-wrap:wrap; gap:10px 22px; color:var(--dim); font-size:13.5px}
+  .meta b{color:var(--muted); font-weight:600}
+  nav{position:sticky; top:0; z-index:20; background:rgba(11,14,20,.82); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line); margin:0 -20px 26px; padding:12px 20px; display:flex; gap:10px; flex-wrap:wrap}
+  nav a{font-size:13.5px; color:var(--muted); text-decoration:none; padding:6px 13px; border:1px solid var(--line);
+    border-radius:999px; transition:.15s}
+  nav a:hover{color:var(--text); border-color:var(--accent); background:var(--card2)}
+  section{margin:34px 0}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px}
+  .sec-head h2{font-size:22px; margin:0; font-weight:700; letter-spacing:-.01em}
+  .sec-head .count{font-size:12.5px; color:var(--dim); background:var(--card); border:1px solid var(--line);
+    padding:2px 9px; border-radius:999px}
+  .sec-desc{color:var(--dim); font-size:14px; margin:0 0 18px}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--card),var(--bg2)); border:1px solid var(--line);
+    border-radius:16px; padding:18px 18px 16px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+    transition:transform .18s, border-color .18s}
+  .card:hover{transform:translateY(-3px); border-color:#33465e}
+  .card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--edge,var(--accent))}
+  .tags{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:10px}
+  .tag{font-size:11px; font-weight:600; letter-spacing:.03em; padding:3px 9px; border-radius:6px;
+    background:var(--card2); color:var(--muted); border:1px solid var(--line)}
+  .tag.date{color:var(--warm)}
+  .tag.org{color:var(--accent)}
+  .card h3{margin:2px 0 8px; font-size:16.5px; line-height:1.35; font-weight:700}
+  .card p{margin:0; color:var(--muted); font-size:14px}
+  .card .src{margin-top:12px; display:inline-flex; align-items:center; gap:5px; font-size:12.5px;
+    color:var(--dim); text-decoration:none}
+  .card .src:hover{color:var(--accent)}
+  .big{grid-column:1 / -1; background:linear-gradient(120deg,#17233a,#141a26)}
+  .big::before{background:linear-gradient(180deg,var(--accent),var(--accent3))}
+  footer{margin-top:50px; padding-top:22px; border-top:1px solid var(--line); color:var(--dim); font-size:13px}
+  footer a{color:var(--muted)}
+  .pill-auto{display:inline-flex; align-items:center; gap:7px; background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:9px 14px; color:var(--muted); font-size:13.5px; margin-top:6px}
+  .pill-auto .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker"><span class="dot"></span> Bản tin tự động cập nhật</span>
+    <h1>AI &amp; Tự động hóa</h1>
+    <p class="sub">Tổng hợp và tóm tắt tin tức mới nhất về AI tạo sinh, agent tự động hóa và ứng dụng AI trong doanh nghiệp — bằng tiếng Việt.</p>
+    <div class="meta">
+      <span><b>Cập nhật:</b> Thứ Sáu, 24/07/2026 · 07:00 (giờ VN)</span>
+      <span><b>Nguồn tin:</b> Tin trong tuần 20–22/07/2026</span>
+    </div>
+    <div class="pill-auto"><span class="dot"></span> Trang tự làm mới mỗi ngày lúc 7:00 sáng</div>
+  </header>
+
+  <nav>
+    <a href="#llm">🧠 AI tạo sinh &amp; LLM</a>
+    <a href="#agent">🤖 Tự động hóa &amp; Agent</a>
+    <a href="#business">💼 AI cho doanh nghiệp</a>
+  </nav>
+
+  <!-- ============ LLM ============ -->
+  <section id="llm">
+    <div class="sec-head"><h2>🧠 AI tạo sinh &amp; LLM</h2><span class="count">6 tin</span></div>
+    <p class="sec-desc">Mô hình ngôn ngữ lớn, sản phẩm AI mới từ OpenAI, Anthropic, Google, Meta, xAI...</p>
+    <div class="grid">
+
+      <div class="card big" style="--edge:linear-gradient(180deg,#6ea8fe,#c9a3ff)">
+        <div class="tags"><span class="tag date">09/07</span><span class="tag org">OpenAI</span><span class="tag">Mô hình đầu bảng</span></div>
+        <h3>OpenAI ra mắt GPT-5.6 với ba phiên bản Sol, Terra, Luna</h3>
+        <p>OpenAI công bố bộ ba GPT-5.6: <b>Sol</b> là bản cao cấp nhất với chế độ Ultra và khả năng suy luận Max; <b>Terra</b> đạt hiệu năng ngang GPT-5.5 nhưng chi phí giảm một nửa; và <b>Luna</b> là bản nhanh, nhẹ. Đây là bước đẩy mạnh cạnh tranh trực tiếp với Anthropic và Google trong nửa cuối 2026.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI — July 2026 Releases</a>
+      </div>
+
+      <div class="card" style="--edge:#7ee0c0">
+        <div class="tags"><span class="tag date">01/07</span><span class="tag org">Anthropic</span></div>
+        <h3>Anthropic tung Sonnet 5, hiệu năng gần Opus 4.8</h3>
+        <p>Sonnet 5 đạt hiệu năng gần với dòng Opus 4.8 nhưng có mức giá giới thiệu ưu đãi đến hết tháng 8. Cùng lúc, mô hình Fable 5 được khôi phục toàn cầu sau giai đoạn tạm dừng vì kiểm soát xuất khẩu, bổ sung bộ phân loại an ninh mạng.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI</a>
+      </div>
+
+      <div class="card" style="--edge:#ffb86b">
+        <div class="tags"><span class="tag date">08/07</span><span class="tag org">xAI</span></div>
+        <h3>xAI phát hành Grok 4.5 — mô hình MoE 1,5 nghìn tỷ tham số</h3>
+        <p>Grok 4.5 dùng kiến trúc Mixture-of-Experts 1,5T tham số, huấn luyện trên dữ liệu agent của Cursor, đạt 83,3% trên Terminal-Bench 2.1 — nhấn mạnh năng lực lập trình và thao tác dòng lệnh.</p>
+        <a class="src" href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">↗ LLM-Stats</a>
+      </div>
+
+      <div class="card" style="--edge:#6ea8fe">
+        <div class="tags"><span class="tag date">09/07</span><span class="tag org">Meta AI</span></div>
+        <h3>Meta ra Muse Spark 1.1 — agent ngữ cảnh 1 triệu token</h3>
+        <p>Mô hình dạng agent với cửa sổ ngữ cảnh 1 triệu token, có khả năng điều khiển máy tính trên nhiều thiết bị và ủy quyền cho các sub-agent chạy song song, tuyên bố dẫn đầu nhiều bài benchmark.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI</a>
+      </div>
+
+      <div class="card" style="--edge:#c9a3ff">
+        <div class="tags"><span class="tag date">16/07</span><span class="tag org">Moonshot AI</span></div>
+        <h3>Moonshot AI ra mắt Kimi K3</h3>
+        <p>Phòng lab Trung Quốc tiếp tục cuộc đua mô hình mở với Kimi K3, cùng thời điểm Grok 4.5 lên kệ — cho thấy nhịp độ ra mắt mô hình mới ngày càng dày trong tháng 7.</p>
+        <a class="src" href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">↗ LLM-Stats</a>
+      </div>
+
+      <div class="card" style="--edge:#7ee0c0">
+        <div class="tags"><span class="tag date">08/07</span><span class="tag org">OpenAI</span></div>
+        <h3>GPT-Live: trò chuyện giọng nói song công, ngắt lời tức thì</h3>
+        <p>OpenAI giới thiệu GPT-Live cho phép hội thoại giọng nói full-duplex — người dùng có thể ngắt lời theo thời gian thực và mô hình tự ủy quyền gọi công cụ khi cần.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ AGENT ============ -->
+  <section id="agent">
+    <div class="sec-head"><h2>🤖 Tự động hóa &amp; Agent</h2><span class="count">5 tin</span></div>
+    <p class="sec-desc">AI agent, nền tảng điều phối workflow, tự động hóa quy trình.</p>
+    <div class="grid">
+
+      <div class="card" style="--edge:#ffb86b">
+        <div class="tags"><span class="tag date">20/07</span><span class="tag org">AWS</span></div>
+        <h3>AWS AgentCore chính thức phát hành (GA)</h3>
+        <p>Nền tảng điều phối agent khai báo của Amazon Bedrock đã GA — tự xử lý bộ nhớ, gọi công cụ, khôi phục lỗi và kho tri thức mà không cần viết code tùy biến. Bước tiến lớn cho việc triển khai agent ở quy mô doanh nghiệp.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+      <div class="card" style="--edge:#6ea8fe">
+        <div class="tags"><span class="tag date">21/07</span><span class="tag org">NVIDIA</span></div>
+        <h3>NVIDIA tích hợp MCP &amp; ra Cosmos 3 Edge</h3>
+        <p>NVIDIA cho phép agent tương tác với công cụ sáng tạo qua Model Context Protocol (MCP) và phát hành Cosmos 3 Edge — mô hình world 4B tham số cho robot biên và AI vật lý.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+      <div class="card" style="--edge:#c9a3ff">
+        <div class="tags"><span class="tag date">20/07</span><span class="tag org">Alibaba Cloud</span></div>
+        <h3>Alibaba Cloud giới thiệu "Agent Native Cloud"</h3>
+        <p>Kiến trúc mới với điều phối AgentTeams, sandbox thực thi an toàn và bộ kỹ năng agent tái sử dụng — hướng đến triển khai agent cho doanh nghiệp một cách chuẩn hóa.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+      <div class="card" style="--edge:#7ee0c0">
+        <div class="tags"><span class="tag date">20/07</span><span class="tag org">Google Cloud</span></div>
+        <h3>Google Cloud phát hành 13 codelab về xây dựng agent</h3>
+        <p>Bộ 13 bài thực hành bao trùm việc xây dựng, quản trị và đánh giá agent trên nền tảng Gemini Enterprise Agent — tài liệu hữu ích cho đội kỹ thuật muốn bắt đầu.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+      <div class="card" style="--edge:#ffb86b">
+        <div class="tags"><span class="tag date">17/07</span><span class="tag org">EU</span></div>
+        <h3>EU buộc Google mở quyền cho agent bên thứ ba trên Android</h3>
+        <p>Ủy ban châu Âu yêu cầu Google cấp cho các agent bên thứ ba quyền kích hoạt bằng giọng nói và chạy tác vụ nền trên Android — mở đường cho hệ sinh thái trợ lý tự động cạnh tranh hơn.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BUSINESS ============ -->
+  <section id="business">
+    <div class="sec-head"><h2>💼 AI cho doanh nghiệp</h2><span class="count">5 tin</span></div>
+    <p class="sec-desc">Ứng dụng AI trong công việc, tài chính công nghệ và chuyển động thị trường.</p>
+    <div class="grid">
+
+      <div class="card" style="--edge:#6ea8fe">
+        <div class="tags"><span class="tag date">09/07</span><span class="tag org">OpenAI</span></div>
+        <h3>ChatGPT for Work — hợp nhất Codex và ChatGPT</h3>
+        <p>Ứng dụng desktop mới gộp Codex và ChatGPT làm một, bổ sung khả năng điều khiển máy tính và tính năng Sites được lưu trữ sẵn — hướng thẳng vào môi trường làm việc doanh nghiệp.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI</a>
+      </div>
+
+      <div class="card" style="--edge:#c9a3ff">
+        <div class="tags"><span class="tag date">20/07</span><span class="tag org">Legal Tech</span></div>
+        <h3>Harvey mua lại Benchmark, Pinecone ra "Nexus"</h3>
+        <p>Harvey thâu tóm Benchmark, phản ánh nhu cầu về hạ tầng ra quyết định trong ngành luật &amp; tài chính. Pinecone Nexus hợp nhất ngữ cảnh tổ chức thành một lớp dùng chung cho nhiều agent, giảm token và tăng nhất quán.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+      <div class="card" style="--edge:#ffb86b">
+        <div class="tags"><span class="tag date">22/07</span><span class="tag org">Google · Tesla</span></div>
+        <h3>Chi phí AI bào mòn dòng tiền của các "ông lớn"</h3>
+        <p>Google báo dòng tiền tự do âm 5,9 tỷ USD trong Q2 — lần đốt tiền đầu tiên kể từ khi lên sàn — do đầu tư AI. Tesla cũng lần đầu âm dòng tiền tự do ($1,1 tỷ) sau hơn hai năm vì rót vốn vào AI và robot.</p>
+        <a class="src" href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">↗ LLM-Stats</a>
+      </div>
+
+      <div class="card" style="--edge:#7ee0c0">
+        <div class="tags"><span class="tag date">01/07</span><span class="tag org">Together AI</span></div>
+        <h3>Together AI gọi vốn 800 triệu USD, định giá 8,3 tỷ</h3>
+        <p>Vòng Series C do Aramco Ventures dẫn dắt, đưa định giá lên 8,3 tỷ USD với doanh thu đặt trước hơn 1 tỷ USD/năm — cho thấy hạ tầng AI vẫn hút vốn mạnh.</p>
+        <a class="src" href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">↗ ThursdAI</a>
+      </div>
+
+      <div class="card" style="--edge:#6ea8fe">
+        <div class="tags"><span class="tag date">21/07</span><span class="tag org">Futu</span></div>
+        <h3>Futu ra "Expert Mode" — đội agent cho đầu tư cá nhân</h3>
+        <p>Nền tảng đầu tư bán lẻ Futu triển khai đội agent đa kỹ năng phục vụ nghiên cứu, mặc định giao dịch mô phỏng và có bảo vệ bằng mật khẩu — ví dụ điển hình về agent len vào sản phẩm tài chính đại chúng.</p>
+        <a class="src" href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">↗ AI Agent Store</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>🤖 Bản tin do Claude tự động tổng hợp từ nhiều nguồn tin công nghệ. Mỗi thẻ tin có liên kết ↗ dẫn tới nguồn gốc để bạn đọc chi tiết.</p>
+    <p>Nguồn tổng hợp: <a href="https://thursdai.news/releases/2026-07" target="_blank" rel="noopener">ThursdAI</a> · <a href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">LLM-Stats</a> · <a href="https://aiagentstore.ai/ai-agent-news/this-week" target="_blank" rel="noopener">AI Agent Store</a></p>
+  </footer>
+</div>
+</body>
+</html>
